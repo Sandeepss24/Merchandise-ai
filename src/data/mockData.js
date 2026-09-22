@@ -8,7 +8,7 @@ export const USERS = [
     role: 'MERCHANDISER',
     employeeId: 'EMP-7742',
     phone: '+65 9123 4567',
-    avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026704d',
+    avatar: 'https://imgh.in/host/dgc0yq',
     assignedLocations: ['store1', 'store2', 'store3']
   },
   {
@@ -20,7 +20,7 @@ export const USERS = [
     role: 'RETAIL_OPS_HEAD',
     employeeId: 'EMP-1102',
     phone: '+65 8123 4567',
-    avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026704e',
+    avatar: 'https://imgh.in/host/203hlp',
     assignedLocations: ['all']
   }
 ];
