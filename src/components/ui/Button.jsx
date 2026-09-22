@@ -3,7 +3,7 @@ import { cn } from '../../lib/utils';
 
 export const Button = React.forwardRef(({ className, variant = 'primary', size = 'md', children, ...props }, ref) => {
   const baseStyles = 'inline-flex items-center justify-center rounded-lg font-medium transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98]';
-  
+
   const variants = {
     primary: 'bg-primary text-white hover:bg-primary-hover shadow-sm',
     secondary: 'bg-white text-text border border-border hover:bg-gray-50 shadow-sm',
