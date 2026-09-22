@@ -73,6 +73,7 @@ export default function AuditDetail() {
                 <table className="w-full text-left text-sm">
                   <thead className="hidden sm:table-header-group bg-surface">
                     <tr className="border-b border-border text-text-secondary">
+                      <th className="pb-3 px-4 sm:px-0 font-semibold text-text">Product Name</th>
                       <th className="pb-3 px-4 sm:px-0 font-semibold text-text">SKU</th>
                       <th className="pb-3 px-4 sm:px-0 font-semibold text-text text-center">Qty Before</th>
                       <th className="pb-3 px-4 sm:px-0 font-semibold text-text text-center">Qty After</th>
@@ -82,6 +83,10 @@ export default function AuditDetail() {
                   <tbody className="divide-y divide-border bg-surface">
                     {audit.products.map((prod, idx) => (
                       <tr key={idx} className="flex flex-col sm:table-row hover:bg-gray-50">
+                        <td className="py-3 px-4 sm:px-0 font-semibold text-text border-b sm:border-0 border-dashed border-gray-200">
+                          <span className="sm:hidden text-xs text-text-secondary font-medium mr-2">Product Name:</span>
+                          {prod.name}
+                        </td>
                         <td className="py-3 px-4 sm:px-0 font-semibold text-text border-b sm:border-0 border-dashed border-gray-200">
                           <span className="sm:hidden text-xs text-text-secondary font-medium mr-2">SKU:</span>
                           {prod.sku}

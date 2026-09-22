@@ -6,6 +6,7 @@ import { MapPin, Box, AlertTriangle, CheckCircle, ChevronRight, Download, Filter
 import { useMockData } from '../context/MockDataContext';
 import { Badge } from '../components/ui/Badge';
 import { Button } from '../components/ui/Button';
+import { exportToCSV } from '../lib/exportUtils';
 
 const visitData = [
   { name: 'Week 1', visits: 12 },
@@ -32,6 +33,24 @@ export default function StoreInsights() {
     }
   };
 
+  const handleExport = () => {
+    if (!store) return;
+    const dataToExport = [{
+      StoreName: store.name,
+      StoreCode: store.code,
+      Type: store.type,
+      Location: `${store.city}, ${store.region}`,
+      TotalAudits: store.metrics.totalAudits,
+      SKUAvailability: `${store.metrics.skuAvailability}%`,
+      DisplayIssues: store.metrics.displayIssues,
+      StockIssues: store.metrics.stockIssues,
+      Compliance: `${store.metrics.compliance}%`,
+      LastVisit: store.lastVisit,
+      NextVisit: store.nextVisit
+    }];
+    exportToCSV(`${store.code}_Store_Performance`, dataToExport);
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
@@ -40,8 +59,8 @@ export default function StoreInsights() {
           <p className="text-text-secondary mt-1 text-sm md:text-base">Deep dive into store performance and merchandising analytics.</p>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" className="gap-2">
-            <Download className="w-4 h-4" /> Export PDF
+          <Button variant="outline" className="gap-2" onClick={handleExport}>
+            <Download className="w-4 h-4" /> Export CSV
           </Button>
         </div>
       </div>

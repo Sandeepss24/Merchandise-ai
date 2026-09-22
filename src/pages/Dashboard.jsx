@@ -29,6 +29,7 @@ import {
 } from "../components/ui/Card";
 import { useAuth } from "../context/AuthContext";
 import { useMockData } from "../context/MockDataContext";
+import { exportToCSV } from "../lib/exportUtils";
 
 const auditTrendData = [
    { name: "Mon", audits: 4 },
@@ -292,6 +293,21 @@ export default function Dashboard() {
       },
    ];
 
+   const handleExportReport = () => {
+      const dataToExport = stores.map(store => ({
+         StoreName: store.name,
+         StoreCode: store.code,
+         Type: store.type,
+         Location: `${store.city}, ${store.region}`,
+         TotalAudits: store.metrics.totalAudits,
+         SKUAvailability: `${store.metrics.skuAvailability}%`,
+         DisplayIssues: store.metrics.displayIssues,
+         StockIssues: store.metrics.stockIssues,
+         Compliance: `${store.metrics.compliance}%`
+      }));
+      exportToCSV('Retail_Ops_Network_Performance', dataToExport);
+   };
+
    return (
       <div className="space-y-6">
          <div className="flex flex-col sm:flex-row justify-between sm:items-end gap-4">
@@ -303,7 +319,7 @@ export default function Dashboard() {
                   Monitor network-wide performance and merchandising execution.
                </p>
             </div>
-            <Button variant="outline" className="gap-2">
+            <Button variant="outline" className="gap-2" onClick={handleExportReport}>
                <Download className="w-4 h-4" /> Export Report
             </Button>
          </div>

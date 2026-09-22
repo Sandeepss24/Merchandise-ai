@@ -8,7 +8,7 @@ export const USERS = [
     role: 'MERCHANDISER',
     employeeId: 'EMP-7742',
     phone: '+65 9123 4567',
-    avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026704d',
+    avatar: 'https://imgh.in/host/dgc0yq',
     assignedLocations: ['store1', 'store2', 'store3']
   },
   {
@@ -20,7 +20,7 @@ export const USERS = [
     role: 'RETAIL_OPS_HEAD',
     employeeId: 'EMP-1102',
     phone: '+65 8123 4567',
-    avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026704e',
+    avatar: 'https://imgh.in/host/203hlp',
     assignedLocations: ['all']
   }
 ];
@@ -38,8 +38,8 @@ export const STORES = [
     contactPerson: 'Manager Tan',
     contactNumber: '6789 0123',
     operatingHours: '08:00 - 22:00',
-    lastVisit: '2023-10-25',
-    nextVisit: '2023-11-01',
+    lastVisit: '2026-10-25',
+    nextVisit: '2026-11-01',
     status: 'Active',
     assignedMerchandiser: 'Alex Ng',
     visitFrequency: 'Weekly',
@@ -63,8 +63,8 @@ export const STORES = [
     contactPerson: 'Manager Lim',
     contactNumber: '6278 1234',
     operatingHours: '09:00 - 22:00',
-    lastVisit: '2023-10-24',
-    nextVisit: '2023-10-31',
+    lastVisit: '2026-10-24',
+    nextVisit: '2026-10-31',
     status: 'Active',
     assignedMerchandiser: 'Alex Ng',
     visitFrequency: 'Weekly',
@@ -88,8 +88,8 @@ export const STORES = [
     contactPerson: 'Manager Wong',
     contactNumber: '6790 5678',
     operatingHours: '24 Hours',
-    lastVisit: '2023-10-20',
-    nextVisit: '2023-10-28',
+    lastVisit: '2026-10-20',
+    nextVisit: '2026-10-28',
     status: 'Inactive',
     assignedMerchandiser: 'Alex Ng',
     visitFrequency: 'Bi-Weekly',
@@ -183,6 +183,7 @@ export const AUDITS = [
     products: [
       {
         sku: 'CP-BKS-300',
+        name: 'CP Breaded Chicken Strips 300g',
         qtyBefore: 5,
         qtyAfter: 25,
         condition: 'Good'
@@ -212,6 +213,7 @@ export const AUDITS = [
     products: [
       {
         sku: 'MG-CRM-2L',
+        name: 'Magnolia Fresh Milk 2L',
         qtyBefore: 2,
         qtyAfter: 12,
         condition: 'Damaged'

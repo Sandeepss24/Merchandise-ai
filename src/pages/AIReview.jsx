@@ -192,6 +192,7 @@ export default function AIReview() {
       products: [
         {
           sku: data.products[0].sku.value,
+          name: data.products[0].name.value,
           qtyBefore: parseInt(data.products[0].qtyBefore.value) || 0,
           qtyAfter: parseInt(data.products[0].qtyAfter.value) || 0,
           condition: data.products[0].condition.value

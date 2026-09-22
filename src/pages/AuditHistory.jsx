@@ -7,6 +7,7 @@ import { useMockData } from '../context/MockDataContext';
 import { useAuth } from '../context/AuthContext';
 import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
+import { exportToCSV } from '../lib/exportUtils';
 
 export default function AuditHistory() {
   const { audits, stores } = useMockData();
@@ -39,6 +40,25 @@ export default function AuditHistory() {
     }
   };
 
+  const handleExport = () => {
+    const dataToExport = filteredAudits.map(audit => {
+      const store = stores.find(s => s.id === audit.storeId);
+      return {
+        AuditID: audit.id,
+        Date: audit.date,
+        Time: audit.time,
+        StoreName: store?.name || '',
+        StoreCode: store?.code || '',
+        DisplayArea: audit.displayArea,
+        Status: audit.status,
+        MerchandiserID: audit.merchandiserId,
+        AICorrectedFields: audit.aiMetadata?.correctedFields?.join('; ') || '',
+        AIConfidence: audit.aiMetadata?.overallConfidence || ''
+      };
+    });
+    exportToCSV('Audit_Records', dataToExport);
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
@@ -47,7 +67,7 @@ export default function AuditHistory() {
           <p className="text-text-secondary mt-1 text-sm md:text-base">View and manage submitted stock audits.</p>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" className="gap-2">
+          <Button variant="outline" className="gap-2" onClick={handleExport}>
             <Download className="w-4 h-4" /> Export CSV
           </Button>
         </div>
