@@ -1,17 +1,18 @@
 // Mock AI Service for simulating document extraction
 
 export const processDocument = async (file, onProgress) => {
+  const isFailureDemo = file.name.toLowerCase().includes('fail');
+
   const steps = [
-    'Image quality check...',
-    'Document detected...',
+    'Analyzing merchandising form...',
+    'Checking image quality...',
+    'Detecting document...',
     'Perspective correction...',
     'Image enhancement...',
-    'Handwriting recognition...',
-    'Field identification...',
-    'Data extraction...',
+    'Reading handwritten fields...',
+    'Extracting audit information...',
     'Validation...',
-    'Confidence scoring...',
-    'Ready for review'
+    'Calculating confidence...',
   ];
 
   for (let i = 0; i < steps.length; i++) {
@@ -19,23 +20,27 @@ export const processDocument = async (file, onProgress) => {
     if (onProgress) {
       onProgress(steps[i], ((i + 1) / steps.length) * 100);
     }
+
+    if (isFailureDemo && i === 5) {
+      throw new Error('PROCESSING_FAILED');
+    }
   }
 
   // Return mock extracted data according to BRS
   return {
-    auditId: `AUD-${Math.floor(Math.random() * 10000)}`,
+    auditId: `AUD-${Math.floor(1000 + Math.random() * 9000)}`,
     store: { value: 'FairPrice Tampines Mall', confidence: 96 },
-    location: { value: 'Tampines', confidence: 95 },
+    location: { value: 'Singapore, East', confidence: 95 },
     date: { value: new Date().toISOString().split('T')[0], confidence: 99 },
     time: { value: '10:30', confidence: 92 },
     displayArea: { value: 'Chilled Section - Aisle 5', confidence: 88 },
     products: [
       {
         id: '1',
-        sku: { value: 'JV-CHS-500', confidence: 61 }, // Low confidence for demo
-        name: { value: 'Johnsonville Chicken Sausage', confidence: 85 },
-        qtyBefore: { value: '8', confidence: 94 },
-        qtyAfter: { value: '20', confidence: 90 },
+        sku: { value: '8934567', confidence: 72 }, // Low confidence for demo
+        name: { value: 'Coca-Cola 1.5L', confidence: 98 },
+        qtyBefore: { value: '12', confidence: 95 },
+        qtyAfter: { value: '24', confidence: 91 },
         condition: { value: 'Good', confidence: 98 }
       }
     ],
@@ -45,7 +50,7 @@ export const processDocument = async (file, onProgress) => {
       priceUpdated: { value: false, confidence: 82 },
       removedExpired: { value: false, confidence: 89 }
     },
-    comments: { value: 'Shelf was low on stock. Restocked 12 packs.', confidence: 75 },
+    comments: { value: 'Shelf was low on stock.', confidence: 75 },
     staffName: { value: 'Alex Ng', confidence: 97 }
   };
 };
