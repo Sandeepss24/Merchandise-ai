@@ -1,9 +1,8 @@
-import React from 'react';
-import { useAuth } from '../context/AuthContext';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
+import { Hash, Key, Mail, MapPin, Phone, Shield } from 'lucide-react';
 import { Badge } from '../components/ui/Badge';
-import { Mail, Phone, Hash, Shield, Key, MapPin } from 'lucide-react';
 import { Button } from '../components/ui/Button';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
+import { useAuth } from '../context/AuthContext';
 
 export default function Profile() {
   const { user } = useAuth();
@@ -25,7 +24,7 @@ export default function Profile() {
                 <img 
                   src={user?.avatar} 
                   alt="Profile" 
-                  className="w-full h-full rounded-full border-4 border-surface shadow-md relative z-10"
+                  className="w-full h-full rounded-full border-4 border-surface shadow-md relative"
                 />
               </div>
               <h2 className="text-xl font-bold text-text">{user?.firstName} {user?.lastName}</h2>
